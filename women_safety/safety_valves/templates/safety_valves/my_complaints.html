@@ -1,0 +1,49 @@
+{% extends "safety_valves/base.html" %}
+
+{% block main %}
+
+<div class="container">
+<div class="text-center">
+	<h1>My Complaints</h1>
+</div>
+<hr>
+<div class="row">
+	<div class="col-md-7 col-sm-10 col-md-offset-1 col-sm-offset-1">
+		<!-- <div class="container"> -->
+		{% for i in feed %}
+		<div class="list-group">
+		  
+
+		  <div class="list-group-item">
+		  		<a href="/complaint/detail/{{i.id}}"><h3 style="color : deeppink">{{i.title}} </h3> </a>
+		  		<div class="row">
+          <div class="col-md-6">
+          Posted on {{i.created_at}}
+          </div>
+          <div class="col-md-6">
+          Against {{i.company}}, {{i.city}}, {{i.country}}
+          </div>
+      </div>
+		  	
+		  </div>
+		  </div>
+		  {% endfor%}
+
+		<!-- </div> -->
+		
+	</div>
+	<div class="col-md-3 col-sm-10">
+		<div class="list-group">
+			<div class="list-group-item text-center">
+			<h3 style="color : deeppink">Tip </h3>
+			<hr>
+			The employee at risk should have a cell phone pre-programmed with 9-1-1 for emergencies. This person also needs to
+			know where the possible routes of escape are and where there are rooms safe to go to, at their workplace.
+			Let other employees know that they should not physically try stop violence. Tell them to quickly leave a potentially violent incident or location and call the police.
+			</div>
+			
+		</div>
+	</div>
+</div>
+</div>
+{% endblock main %}

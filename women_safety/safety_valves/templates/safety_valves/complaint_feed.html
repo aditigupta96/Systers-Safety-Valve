@@ -1,0 +1,45 @@
+{% extends "safety_valves/base.html" %}
+
+{% block main %}
+
+<div class="container">
+<div class="text-center">
+	<h1>Feed</h1>
+</div>
+<hr>
+<div class="row">
+	<div class="col-md-7 col-sm-10 col-md-offset-1 col-sm-offset-1">
+		<!-- <div class="container"> -->
+		{% for i in feed %}
+		<div class="list-group">
+		  
+
+		  <div class="list-group-item">
+		  		<a href="/complaint/detail/{{i.id}}"><h3 style="color : blue">{{i.title}} </h3> </a>
+		  		<div class="row">
+          <div class="col-md-6">
+          Posted on {{i.created_at}}
+          </div>
+          <div class="col-md-6">
+          Against {{i.company}}, {{i.city}}, {{i.country}}
+          </div>
+      </div>
+		  	
+		  </div>
+		  </div>
+		  {% endfor%}
+
+		<!-- </div> -->
+		
+	</div>
+	<div class="col-md-3 col-sm-10">
+		<div class="list-group">
+			<div class="list-group-item">Helpline-No-1</div>
+			<div class="list-group-item">Helpline-No-2</div>
+			<div class="list-group-item">Helpline-No-3</div>
+			<div class="list-group-item">Helpline-No-4</div>
+		</div>
+	</div>
+</div>
+</div>
+{% endblock main %}

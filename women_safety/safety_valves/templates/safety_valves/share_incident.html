@@ -1,0 +1,61 @@
+{% extends "safety_valves/base.html" %}
+
+{% block main %}
+<div class="container">
+<div class="list-group">
+  
+  <div class="list-group-item">
+  		<h2 style="color : black">{{incident.title}} </h2>
+      <hr>
+      <div class="row">
+          <div class="col-md-6">
+          Posted on {{incident.created_at}}
+          </div>
+          <div class="col-md-6">
+          Against {{incident.company}}, {{incident.city}}, {{incident.country}}
+          </div>
+      </div>
+      <hr>
+  		{{incident.experience}}
+  </div>
+
+
+
+  <div class="form-group" >
+      <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-info btn-md"><span class="glyphicon glyphicon-envelope"></span></button>
+      
+      <a type="button" href="/complaint/sharetwitter/{{incident.id}}" class="btn btn-info btn-md">Share on Twitter</a>
+  </div>
+
+  <div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Share via Email</h4>
+      </div>
+      <div class="modal-body">
+        <p>Select the Email recipients:</p>
+        <form method="POST" action="/complaint/email/{{ incident.id }}/">
+        {% csrf_token %}
+        {% for email in emails %}
+          <div class="checkbox">
+            <label><input type="checkbox" name="checks" value="{{ email }}">{{ email }}</label>
+          </div>
+        {% endfor %}
+        <button type="submit" name="" class="btn btn-primary">Send email</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+</div>
+
+{% endblock main %}

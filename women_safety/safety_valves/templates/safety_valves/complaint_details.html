@@ -1,0 +1,32 @@
+{% extends "safety_valves/base.html" %}
+
+{% block main %}
+<div class="container">
+<div class="list-group">
+  
+  <div class="list-group-item">
+  		<h2 style="color : blue">{{incident.title}} </h2>
+      <hr>
+      <div class="row">
+          <div class="col-md-6">
+          Posted on {{incident.created_at}}
+          </div>
+          <div class="col-md-6">
+          Against {{incident.company}}, {{incident.city}}, {{incident.country}}
+          </div>
+      </div>
+      <hr>
+  		{{incident.experience}}
+
+</div>
+      <br>
+      <!-- <div class="form-group" >
+      
+      <a type="button" href="/complaint/sharetwitter/{{incident.id}}" class="btn btn-info btn-md">Share on Twitter</a>
+  
+  </div> -->
+  <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+</div>
+</div>
+{% endblock main %}
